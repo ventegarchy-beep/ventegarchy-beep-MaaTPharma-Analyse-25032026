@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaaT Pharma (MAAT) — Analyse Boursière 25/03/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04060f;
+    --surface: #080c18;
+    --surface2: #0d1226;
+    --border: #131a30;
+    --heading: #eef0ff;
+    --text: #b8bde0;
+    --sub: #6872a8;
+    --accent: #818cf8;
+    --accent-dim: rgba(129,140,248,0.12);
+    --green: #34d399;
+    --red: #f87171;
+    --yellow: #fbbf24;
+    --orange: #fb923c;
+    --blue: #38bdf8;
+    --purple: #c084fc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 15px; line-height: 1.65; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* HERO */
+  .hero { position: relative; padding: 52px 36px 40px; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 40%, rgba(129,140,248,0.07) 0%, transparent 70%); pointer-events: none; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-dim); border: 1px solid rgba(129,140,248,0.3); border-radius: 20px; padding: 4px 14px; font-size: 11.5px; font-weight: 600; letter-spacing: .06em; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; }
+  .hero-badge::before { content: '◆'; font-size: 9px; }
+  .hero h1 { font-size: 2.8rem; font-weight: 700; color: var(--heading); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
+  .hero h1 span { color: var(--accent); }
+  .hero-tagline { font-size: 1.05rem; color: var(--sub); font-style: italic; margin-bottom: 26px; max-width: 640px; }
+  .course-line { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--heading); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .course-line .delta { font-size: 1rem; padding: 3px 10px; border-radius: 8px; background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12.5px; color: var(--sub); }
+  .hero-meta strong { color: var(--text); font-weight: 600; }
+  .npc { font-size: 11px; color: #4a5080; font-style: italic; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+  /* SECTIONS */
+  section { margin-top: 40px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ALERTS */
+  .alert { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid; font-size: 14px; }
+  .alert .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .alert strong { display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 3px; }
+  .ag { background: rgba(52,211,153,0.07); border-color: var(--green); color: #a7f3d0; }
+  .ag strong { color: var(--green); }
+  .aw { background: rgba(251,191,36,0.07); border-color: var(--yellow); color: #fde68a; }
+  .aw strong { color: var(--yellow); }
+  .ab { background: rgba(56,189,248,0.07); border-color: var(--blue); color: #bae6fd; }
+  .ab strong { color: var(--blue); }
+  .ar { background: rgba(248,113,113,0.07); border-color: var(--red); color: #fecaca; }
+  .ar strong { color: var(--red); }
+
+  /* KPI GRID */
+  .kg { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 14px 14px; }
+  .kl { font-size: 10.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--sub); margin-bottom: 6px; }
+  .kv { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 700; color: var(--heading); line-height: 1; }
+  .kd { font-size: 11px; margin-top: 5px; }
+  .kd.up { color: var(--green); }
+  .kd.down { color: var(--red); }
+  .kd.neu { color: var(--sub); }
+  .ks { font-size: 11px; color: var(--sub); margin-top: 3px; }
+
+  /* CARD */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 12px; }
+  .card h3 { font-size: 1rem; font-weight: 700; color: var(--heading); margin-bottom: 14px; }
+  .card p { color: #6872a8; line-height: 1.7; font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { background: var(--surface2); color: var(--sub); font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid rgba(19,26,48,0.6); color: var(--text); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .dt { margin-top: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .dt td { color: #6872a8; font-size: 13.5px; }
+
+  /* TIMELINE */
+  .tl { position: relative; padding-left: 28px; margin-top: 12px; }
+  .tl::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tli { position: relative; margin-bottom: 18px; }
+  .tli::before { content: ''; position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
+  .tli.done::before { background: var(--green); }
+  .tli.key::before { background: var(--accent); }
+  .tli.hot::before { background: var(--red); box-shadow: 0 0 10px rgba(248,113,113,0.6); }
+  .tli.now::before { background: var(--yellow); box-shadow: 0 0 8px rgba(251,191,36,0.5); }
+  .tli.next::before { background: var(--orange); }
+  .tld { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 3px; }
+  .tld.done { color: var(--green); }
+  .tld.key { color: var(--accent); }
+  .tld.hot { color: var(--red); }
+  .tld.now { color: var(--yellow); }
+  .tld.next { color: var(--orange); }
+  .tldesc { font-size: 13.5px; color: #6872a8; line-height: 1.55; }
+  .tldesc strong { color: var(--text); }
+
+  /* FIBONACCI */
+  .frow { display: grid; grid-template-columns: 110px 1fr 110px; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(19,26,48,0.5); }
+  .frow:last-child { border-bottom: none; }
+  .frow.golden { background: rgba(251,191,36,0.07); border-radius: 8px; padding: 10px 12px; margin: 2px -12px; border: 1px solid rgba(251,191,36,0.3); }
+  .flvl { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #6872a8; font-weight: 600; }
+  .frow.golden .flvl { color: var(--yellow); font-weight: 700; }
+  .fbar-wrap { background: rgba(255,255,255,0.04); border-radius: 4px; height: 8px; }
+  .fbar { height: 8px; border-radius: 4px; background: rgba(129,140,248,0.25); }
+  .frow.golden .fbar { background: var(--yellow); }
+  .fprice { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 700; color: var(--text); text-align: right; }
+  .frow.golden .fprice { color: var(--yellow); font-size: 1.1rem; }
+  .fib-header { display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--sub); padding: 0 0 10px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+  .fib-note { margin-top: 14px; font-size: 12.5px; color: var(--sub); padding: 12px 16px; background: rgba(251,191,36,0.05); border-radius: 8px; border-left: 3px solid rgba(251,191,36,0.4); }
+  .fib-warn { margin-top: 10px; font-size: 12.5px; color: #fecaca; padding: 10px 16px; background: rgba(248,113,113,0.06); border-radius: 8px; border-left: 3px solid rgba(248,113,113,0.35); }
+
+  /* CONSENSUS */
+  .analysts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .analyst-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .analyst-card .aname { font-weight: 700; color: var(--heading); font-size: 14px; margin-bottom: 4px; }
+  .analyst-card .adate { font-size: 11px; color: var(--sub); margin-bottom: 10px; }
+  .analyst-card .atarget { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--green); }
+  .analyst-card .arec { display: inline-block; padding: 2px 10px; border-radius: 20px; background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.25); font-size: 11px; font-weight: 700; text-transform: uppercase; margin-top: 6px; letter-spacing: .04em; }
+  .analyst-card .upside { font-size: 11.5px; color: var(--sub); margin-top: 6px; }
+  .analyst-card .upside span { color: var(--green); font-weight: 700; }
+  .cons-summary { background: rgba(129,140,248,0.06); border: 1px solid rgba(129,140,248,0.2); border-radius: 10px; padding: 18px 20px; margin-top: 14px; display: flex; align-items: center; gap: 20px; }
+  .cons-summary .big { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+  .cons-summary .det { font-size: 13.5px; color: #6872a8; }
+  .cons-summary .det strong { color: var(--heading); display: block; margin-bottom: 3px; }
+  .cons-disclaimer { font-size: 12.5px; color: var(--sub); padding: 12px 16px; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: 8px; margin-top: 14px; line-height: 1.65; }
+
+  /* PERSPECTIVES */
+  .pg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+  .pc { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .pc h4 { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+  .pc h4.ct { color: var(--orange); }
+  .pc h4.mt { color: var(--accent); }
+  .pc h4.lt { color: var(--green); }
+  .pc .horizon { font-size: 10.5px; color: var(--sub); margin-bottom: 12px; }
+  .pc ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .pc ul li { font-size: 13px; color: #6872a8; padding-left: 14px; position: relative; }
+  .pc ul li::before { content: '›'; position: absolute; left: 0; font-weight: 700; color: var(--accent); }
+
+  /* VERDICT */
+  .verdict { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-top: 12px; position: relative; overflow: hidden; }
+  .verdict::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--purple)); }
+  .verdict h3 { font-size: 1rem; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
+  .verdict p { font-size: 14px; color: #6872a8; line-height: 1.75; margin-bottom: 12px; }
+  .conclu { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-radius: 10px; padding: 16px 20px; margin-top: 18px; font-size: 13.5px; color: #fde68a; line-height: 1.7; }
+  .conclu .clabel { color: var(--yellow); display: block; margin-bottom: 8px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+  .conclu .cline { display: block; color: var(--heading); margin-bottom: 6px; font-size: 14px; }
+
+  /* SCORE */
+  .score-wrap { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+  .score-badge { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(129,140,248,0.08); flex-shrink: 0; }
+  .score-badge .sn { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .score-badge .sl { font-size: 9px; color: var(--sub); text-transform: uppercase; letter-spacing: .06em; }
+  .score-desc { font-size: 13.5px; color: var(--sub); }
+  .score-desc strong { color: var(--heading); display: block; font-size: 1rem; margin-bottom: 3px; }
+
+  /* URGENT BOX */
+  .urgent { background: rgba(248,113,113,0.08); border: 2px solid rgba(248,113,113,0.35); border-radius: 12px; padding: 20px 24px; margin-top: 14px; }
+  .urgent h4 { color: var(--red); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .urgent p { font-size: 13.5px; color: #fecaca; line-height: 1.65; }
+
+  /* MISC */
+  .prog-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 6px; width: 120px; display: inline-block; vertical-align: middle; }
+  .prog-bar { height: 6px; border-radius: 4px; }
+  .pb-green { background: var(--green); }
+  .pb-yellow { background: var(--yellow); }
+  .pb-accent { background: var(--accent); }
+  .pb-blue { background: var(--blue); }
+  .pb-orange { background: var(--orange); }
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .tag-green { background: rgba(52,211,153,0.12); color: var(--green); }
+  .tag-yellow { background: rgba(251,191,36,0.12); color: var(--yellow); }
+  .tag-accent { background: rgba(129,140,248,0.12); color: var(--accent); }
+  .tag-blue { background: rgba(56,189,248,0.12); color: var(--blue); }
+  .tag-orange { background: rgba(251,146,60,0.12); color: var(--orange); }
+  .tag-red { background: rgba(248,113,113,0.12); color: var(--red); }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); margin-top: 50px; padding: 20px; font-size: 11.5px; color: #4a5080; line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 2rem; }
+    .kg { grid-template-columns: repeat(2, 1fr); }
+    .pg { grid-template-columns: 1fr; }
+    .analysts-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">Biotech · Microbiome · Hémato-Oncologie</div>
+    <h1>MaaT <span>Pharma</span></h1>
+    <p class="hero-tagline">« Microbiote As A Therapy » — Biotech lyonnaise pionnière des thérapies à base de microbiote intestinal en oncologie. AMM EMA en cours pour Xervyteg® — décision mi-2026</p>
+    <div class="course-line">
+      <span>6,76 €</span>
+      <span class="delta">▲ +1,81 %</span>
+      <span style="font-size:.9rem;color:var(--sub);font-family:'Exo 2',sans-serif;font-weight:400">MAAT · Euronext Paris</span>
+    </div>
+    <div class="hero-meta">
+      <span>📅 <strong>25 mars 2026 — 16h30 CET</strong></span>
+      <span>🏙️ <strong>Lyon, France</strong> — fondée 2014</span>
+      <span>🔬 <strong>ISIN</strong> FR0012634822</span>
+      <span>📊 <strong>RSI(14)</strong> 58,39 · <strong>MACD ZéroLag</strong> −0,260 ⚠️</span>
+      <span>💹 <strong>Actions</strong> 18 847 475 · <strong>Cap.</strong> ~127 M€</span>
+    </div>
+    <p class="npc">⚠️ NPC — Analyse personnelle réalisée à titre informatif uniquement. Pas un conseil en investissement. Toujours effectuer vos propres recherches (DYOR) avant toute décision. Cours différés de 15 min (ProRealTime). Les performances passées ne préjugent pas des performances futures.</p>
+  </header>
+
+  <!-- ALERTE URGENTE -->
+  <section>
+    <div class="urgent">
+      <h4>🚨 CATALYSEUR DANS 5 JOURS</h4>
+      <p><strong style="color:var(--red)">30 mars 2026</strong> — Publication des résultats financiers pour le 4ème trimestre et l'ensemble de l'exercice 2025. C'est la prochaine date de communication officielle annoncée dans l'agenda financier. Positionnement à prendre AVANT cette date ou APRÈS avec la prudence nécessaire.</p>
+    </div>
+  </section>
+
+  <!-- ALERTES -->
+  <section>
+    <div class="section-title">Alertes</div>
+
+    <div class="alert ag">
+      <span class="icon">🔬</span>
+      <div>
+        <strong>ARES Phase 3 — Résultats finaux présentés il y a 2 jours à l'EBMT Madrid (23/03/2026)</strong>
+        Le Pr. Florent Malard a présenté les résultats finaux de l'essai pivotal ARES évaluant MaaT013 (Xervyteg®) dans la GvH aiguë gastro-intestinale réfractaire en session plénière présidentielle. Les chiffres clés confirment : <strong>taux de réponse globale GI (GI-ORR) 62 % au J28</strong> (38 % de réponse complète + 20 % VGPR) et <strong>survie globale estimée à 54 % à 12 mois</strong> — contre ~15 % reporté dans la littérature pour les options hors AMM. Ces résultats sont soumis à une revue à comité de lecture. Prochaine présentation orale : 27 mars 2026 (dans 2 jours) au Congrès SFH à Paris.
+      </div>
+    </div>
+
+    <div class="alert ag">
+      <span class="icon">📋</span>
+      <div>
+        <strong>AMM EMA en cours — Décision attendue mi-2026 : le catalyseur le plus déterminant</strong>
+        MaaT013 (Xervyteg®) est en cours d'examen par l'EMA depuis juin 2025, date de dépôt de la demande d'AMM. La décision est attendue autour de mi-2026. Si accordée, <strong>Clinigen déclenche un milestone de 12 M€</strong> (accord de licence/distribution EU) et Xervyteg® devient le premier immunomodulateur à base de microbiote approuvé en Europe pour l'aGvH. Ce jalon réglementaire est le pivot de toute la stratégie de financement 2026-2027.
+      </div>
+    </div>
+
+    <div class="alert aw">
+      <span class="icon">💧</span>
+      <div>
+        <strong>Trésorerie : horizon août 2026 — dépendance critique au jalon EMA</strong>
+        Post-AK de novembre 2025 (~9 M€), l'horizon de trésorerie est étendu jusqu'à <strong>août 2026</strong>. Si l'EMA approuve Xervyteg® à mi-2026, le milestone Clinigen de 12 M€ + tranche BEI suivante prolongent jusqu'à <strong>début 2027</strong>. Si la décision est négative ou différée, MaaT Pharma devra trouver un financement d'ici fin 2026. Le burn rate opérationnel est élevé : ~14-15 M€ de dépenses opérationnelles par semestre (H1 2025).
+      </div>
+    </div>
+
+    <div class="alert ar">
+      <span class="icon">📉</span>
+      <div>
+        <strong>MACD Zéro Lag négatif (−0,260) — signal de faiblesse court terme à ne pas ignorer</strong>
+        Malgré un RSI neutre à 58, le MACD ZéroLag est en territoire négatif. Le cours teste <strong>exactement</strong> le niveau Golden Ratio Fibonacci (6,76 €). Si ce support cède, le prochain niveau de support est le 50% Fibonacci à <strong>5,97 €</strong>. La configuration technique actuelle est mixte : structure long terme préservée, mais momentum CT dégradé.
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI GRID -->
+  <section>
+    <div class="section-title">KPIs Clés — Sources Vérifiées</div>
+    <div class="kg">
+      <div class="kpi">
+        <div class="kl">Cours clôture</div>
+        <div class="kv">6,76 €</div>
+        <div class="kd up">▲ +1,81 % séance</div>
+        <div class="ks">PRT 16:01 CET, diff. 15min</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">RSI (14)</div>
+        <div class="kv">58,39</div>
+        <div class="kd neu">Zone neutre</div>
+        <div class="ks">Lu sur graphique PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">MACD ZéroLag</div>
+        <div class="kv">−0,260</div>
+        <div class="kd down">⚠️ Négatif CT</div>
+        <div class="ks">Lu sur graphique PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Actions</div>
+        <div class="kv">18 847 475</div>
+        <div class="kd neu">Au 31/01/2026</div>
+        <div class="ks">Communiqué 03/02/2026</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Cap. boursière</div>
+        <div class="kv">~127 M€</div>
+        <div class="kd neu">18 847 475 × 6,76 €</div>
+        <div class="ks">Euronext Paris</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Trésorerie T3 2025</div>
+        <div class="kv">22,4 M€</div>
+        <div class="kd neu">Au 30/09/2025</div>
+        <div class="ks">Communiqué 04/11/2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Horizon tréso.</div>
+        <div class="kv">Août 2026</div>
+        <div class="kd down">Si EMA OK → 2027</div>
+        <div class="ks">Post-AK nov. 2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">CA 9M 2025</div>
+        <div class="kv">3,4 M€</div>
+        <div class="kd up">▲ +45% vs 2024</div>
+        <div class="ks">Accès compassionnel</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Golden Ratio Fib.</div>
+        <div class="kv">6,76 €</div>
+        <div class="kd now" style="color:var(--yellow)">= Cours actuel !</div>
+        <div class="ks">61,8% log — test critique</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">ARES GI-ORR J28</div>
+        <div class="kv">62 %</div>
+        <div class="kd up">▲ Phase 3 confirmé</div>
+        <div class="ks">EBMT 23/03/2026</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">OS 12 mois ARES</div>
+        <div class="kv">54 %</div>
+        <div class="kd up">vs ~15% standard</div>
+        <div class="ks">Phase 3 ARES final</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Prochaine pub.</div>
+        <div class="kv">30 Mars</div>
+        <div class="kd" style="color:var(--red)">🚨 Dans 5 jours</div>
+        <div class="ks">Résultats annuels 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÉSENTATION -->
+  <section>
+    <div class="section-title">Présentation Société & Pipeline</div>
+    <div class="card">
+      <p>MaaT Pharma (<em>Microbiote As A Therapy</em>) est une société de biotechnologie en phase clinique avancée fondée en 2014 à Lyon. Pionnière dans le développement de <strong style="color:var(--text)">Microbiome Ecosystem Therapies™ (MET)</strong>, elle développe des médicaments standardisés à haute diversité bactérienne grâce à ses technologies propriétaires de pooling et co-culture microbienne. Son objectif : moduler le système immunitaire des patients atteints de cancer pour améliorer leur survie. MaaT013 (Xervyteg®) est son candidat le plus avancé, en cours d'examen réglementaire auprès de l'EMA pour l'aGvH gastrointestinale réfractaire, depuis juin 2025.</p>
+    </div>
+
+    <div class="dt" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>Candidat</th>
+            <th>Indication</th>
+            <th>Stade</th>
+            <th>Partenaire(s)</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--heading)">MaaT013 (Xervyteg®)</strong></td>
+            <td>aGvH gastro-intestinale 3ème ligne</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-green" style="width:92%"></div></div>
+                <span style="font-size:11.5px;color:var(--green)">AMM EMA déposée</span>
+              </div>
+            </td>
+            <td>Clinigen (EU), EAP US</td>
+            <td><span class="tag tag-yellow">Décision mi-2026</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--heading)">MaaT033</strong></td>
+            <td>Survie post-greffe allogénique CSH</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-accent" style="width:50%"></div></div>
+                <span style="font-size:11.5px;color:var(--accent)">Phase 2b PHOEBUS</span>
+              </div>
+            </td>
+            <td>—</td>
+            <td><span class="tag tag-accent">En cours</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--heading)">MaaT033 — IMMUNOLIFE</strong></td>
+            <td>NSCLC résistants aux ICI</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-blue" style="width:30%"></div></div>
+                <span style="font-size:11.5px;color:var(--blue)">Phase 2 (1er patient jan. 2026)</span>
+              </div>
+            </td>
+            <td>Gustave Roussy (promoteur)</td>
+            <td><span class="tag tag-blue">Démarré</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--heading)">MaaT034</strong></td>
+            <td>Tumeurs solides (immuno-oncologie)</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-orange" style="width:10%"></div></div>
+                <span style="font-size:11.5px;color:var(--orange)">Préclinique (MET-C)</span>
+              </div>
+            </td>
+            <td>—</td>
+            <td><span class="tag tag-orange">Pipeline</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h3>🏦 Structure de financement vérifiée</h3>
+      <div class="dt" style="margin-top:0;border:none">
+        <table>
+          <tbody>
+            <tr><td style="color:var(--sub);width:260px">AK mars 2025</td><td style="font-family:'JetBrains Mono',mono;color:var(--text)">13 M€ à 6,10 €/action (2 131 148 nouvelles actions)</td></tr>
+            <tr><td style="color:var(--sub)">Accord Clinigen (licence EU)</td><td style="color:var(--green);font-weight:700">10,5 M€ upfront reçus juillet 2025 ✓</td></tr>
+            <tr><td style="color:var(--sub)">Financement BEI (4 tranches)</td><td style="font-family:'JetBrains Mono',mono;color:var(--text)">37,5 M€ total · Tranche A 3,5 M€ reçue oct. 2025 ✓</td></tr>
+            <tr><td style="color:var(--sub)">AK novembre 2025</td><td style="font-family:'JetBrains Mono',mono;color:var(--text)">~9,1 M€ à 3,48 €/action (placement privé + PrimaryBid)</td></tr>
+            <tr><td style="color:var(--sub)">Milestone Clinigen si AMM EMA</td><td style="color:var(--accent);font-weight:700">12 M€ à déclencher si approbation mid-2026</td></tr>
+            <tr><td style="color:var(--sub)">Horizon trésorerie actuel</td><td style="color:var(--yellow);font-weight:700">Août 2026 → début 2027 si EMA + Clinigen OK</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHRONOLOGIE -->
+  <section>
+    <div class="section-title">Chronologie des Événements Clés</div>
+    <div class="tl">
+
+      <div class="tli done">
+        <div class="tld done">✓ Janv. 2025 — Résultats positifs principaux Phase 3 ARES</div>
+        <div class="tldesc">Publication des premières données ARES : GI-ORR 62% au J28 et OS 12 mois 54%. DSMB confirme le profil bénéfice/risque. Point de départ du dépôt réglementaire EMA.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Mars 2025 — AK de 13 M€ à 6,10 € avec actionnaires historiques (dont Biocodex et Bpifrance)</div>
+        <div class="tldesc">Emission de <strong>2 131 148 nouvelles actions</strong>. Fonds destinés au financement du dépôt AMM et au développement clinique.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Juin 2025 — Dépôt de la demande d'AMM à l'EMA pour MaaT013 (Xervyteg®)</div>
+        <div class="tldesc">Dépôt officiel de la demande d'autorisation de mise sur le marché en Europe pour MaaT013 dans l'aGvH gastro-intestinale réfractaire aux corticoïdes et au ruxolitinib.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Juil. 2025 — Accord Clinigen : 10,5 M€ upfront + milestone 12 M€ conditionnel AMM</div>
+        <div class="tldesc">Accord exclusif de licence et distribution avec Clinigen pour l'accès à Xervyteg® dans toute l'Europe. Paiement initial de <strong>10,5 M€ reçus</strong>. Si EMA approuve → milestone de <strong>12 M€</strong>.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Oct. 2025 — Tranche A BEI de 3,5 M€ reçue (prêt 37,5 M€ total en 4 tranches)</div>
+        <div class="tldesc">Première tranche de 3,5 M€ du financement BEI débloquée. Les 3 tranches suivantes conditionnées à des jalons réglementaires/commerciaux.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Nov. 2025 — AK de ~9,1 M€ à 3,48 € (placement privé + PrimaryBid)</div>
+        <div class="tldesc">Emission d'environ 2,6 M nouvelles actions à 3,48 €. Horizon de trésorerie étendu jusqu'à <strong>août 2026</strong>. Cette AK ouvre droit à la Tranche B BEI de 6 M€.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Déc. 2025 — Résultats finaux ARES présentés au congrès ASH 2025 (Orlando)</div>
+        <div class="tldesc">54 % de survie globale à 12 mois confirmée, intégrée au dossier réglementaire EMA. Stifel et KBC Securities confirment leurs conseils à l'Achat.</div>
+      </div>
+
+      <div class="tli done">
+        <div class="tld done">✓ Janv. 2026 — Randomisation du 1er patient dans l'essai IMMUNOLIFE (Phase 2)</div>
+        <div class="tldesc">MaaT033 + immunothérapie dans le cancer du poumon non à petites cellules (NSCLC) résistant aux ICI. Promoteur : Gustave Roussy. Résultats primaires attendus fin 2030.</div>
+      </div>
+
+      <div class="tli key">
+        <div class="tld key">★ 23 Mars 2026 — Résultats finaux ARES en SESSION PLÉNIÈRE PRÉSIDENTIELLE EBMT Madrid</div>
+        <div class="tldesc">Présentation des données finales ARES par le Pr. Malard devant l'ensemble des hématologues européens lors du moment le plus visible du congrès EBMT. GI-ORR 62% J28, OS 54% à 1 an confirmés. <strong>Il y a 2 jours.</strong> Congrès SFH Paris prévu 27 mars 2026.</div>
+      </div>
+
+      <div class="tli now">
+        <div class="tld now">▶ AUJOURD'HUI — 25 mars 2026, 16h30 — 6,76 € (+1,81 %)</div>
+        <div class="tldesc">Le cours teste <strong>exactement</strong> le Golden Ratio Fibonacci (61,8% log = 6,76 €). RSI 58 neutre. MACD négatif (-0,260). Signal technique mixte. Résistance à 8,46 € visible sur PRT. Support 50% Fib : 5,97 €.</div>
+      </div>
+
+      <div class="tli hot">
+        <div class="tld hot">🚨 27 Mars 2026 — Congrès SFH Paris (présentation orale Pr. Malard)</div>
+        <div class="tldesc">Deuxième présentation des résultats ARES, au Congrès annuel de la Société Française d'Hématologie. <strong>Dans 2 jours.</strong> Médiatisation nationale potentielle.</div>
+      </div>
+
+      <div class="tli hot">
+        <div class="tld hot">🚨 30 Mars 2026 — Résultats financiers annuels 2025 (Q4 + exercice complet)</div>
+        <div class="tldesc">Première publication financière incluant la trésorerie Q4 2025, le CA annuel 2025, la perte nette 2025 et la mise à jour du horizon de trésorerie. <strong>Dans 5 jours.</strong> Catalyseur majeur fondamental.</div>
+      </div>
+
+      <div class="tli next">
+        <div class="tld next">→ Mi-2026 — Décision EMA sur Xervyteg® (MaaT013) dans l'aGvH</div>
+        <div class="tldesc">Pivot de toute la stratégie. Si AMM accordée : (1) Clinigen déclenche 12 M€, (2) Xervyteg® devient 1er immunomodulateur microbiote approuvé en EU pour l'aGvH, (3) lancement commercial européen. Horizon tréso extensible jusqu'à début 2027.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIBONACCI -->
+  <section>
+    <div class="section-title">Analyse Technique — Fibonacci</div>
+    <div class="card">
+      <h3>Fibonacci tracé ProRealTime 1S (hebdomadaire) — Base : 3,53 € (0%) → Sommet : 10,1 € (100%)</h3>
+      <p style="margin-bottom:16px">Amplitude de <strong style="color:var(--orange)">+186 %</strong> entre le plancher et l'ATH. Sur cette amplitude et en vue hebdomadaire, le calcul est effectué en échelle <strong style="color:var(--text)">logarithmique</strong> dans ProRealTime — vérifié mathématiquement : les niveaux lus sur le graphique correspondent exactement à la formule <em>Prix = Base × (ATH/Base)^ratio</em>. Tous les niveaux ci-dessous sont lus directement sur le graphique PRT.</p>
+
+      <div>
+        <div class="fib-header">
+          <span>Niveau Fibonacci</span>
+          <span>Barre proportionnelle</span>
+          <span>Prix (lu sur PRT)</span>
+        </div>
+
+        <div class="frow">
+          <div class="flvl" style="color:var(--red)">100% — ATH</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:100%;background:rgba(248,113,113,0.4)"></div></div>
+          <div class="fprice" style="color:var(--red)">10,1 €</div>
+        </div>
+
+        <div class="frow golden">
+          <div class="flvl">61,8% ← COURS ACTUEL ★</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:61.8%"></div></div>
+          <div class="fprice">6,76 €  ⬅</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">50% — Médiane</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:50%"></div></div>
+          <div class="fprice">5,97 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">38,2%</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:38.2%"></div></div>
+          <div class="fprice">5,27 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">23,6%</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:23.6%"></div></div>
+          <div class="fprice">4,52 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">0% — Plancher</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:2%"></div></div>
+          <div class="fprice">3,53 €</div>
+        </div>
+      </div>
+
+      <div class="fib-note">
+        <strong style="color:var(--yellow)">Situation technique ultra-critique :</strong> Le cours à 6,76 € coïncide <em>exactement</em> avec le Golden Ratio (61,8% log). Ce niveau fonctionne comme <strong>support ET résistance psychologique majeur</strong>. Un maintien au-dessus est haussier structurellement. Résistances visibles sur PRT au-dessus : <strong>8,46 €</strong> (zone de résistance visible à droite du graphique). En dessous : support 50% à <strong>5,97 €</strong> puis 38,2% à <strong>5,27 €</strong>.
+      </div>
+      <div class="fib-warn">
+        ⚠️ <strong>Signal de vigilance :</strong> Le MACD ZéroLag est négatif (−0,260). Historiquement, un MACD négatif sur un support clé signifie que la pression vendeuse est présente. Si le cours cède le Golden Ratio (6,76 €), un retour vers 5,97 € (50% Fib) est à anticiper dans un premier temps.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSENSUS ANALYSTES -->
+  <section>
+    <div class="section-title">Couverture Analystes — Données Vérifiées</div>
+
+    <div class="analysts-grid">
+      <div class="analyst-card">
+        <div class="aname">Stifel</div>
+        <div class="adate">Réitéré 21/01/2026 (post-IMMUNOLIFE)</div>
+        <div class="atarget">19,00 €</div>
+        <div class="arec">Achat</div>
+        <div class="upside">Upside vs cours actuel : <span>+181 %</span></div>
+      </div>
+      <div class="analyst-card">
+        <div class="aname">Kepler Cheuvreux</div>
+        <div class="adate">Confirmé 21/01/2026</div>
+        <div class="atarget">17,00 €</div>
+        <div class="arec">Achat</div>
+        <div class="upside">Upside vs cours actuel : <span>+152 %</span></div>
+      </div>
+      <div class="analyst-card">
+        <div class="aname">KBC Securities</div>
+        <div class="adate">Confirmé déc. 2025 (post-ASH)</div>
+        <div class="atarget">15,00 €</div>
+        <div class="arec">Achat</div>
+        <div class="upside">Upside vs cours actuel : <span>+122 %</span></div>
+      </div>
+    </div>
+
+    <div class="cons-summary">
+      <div class="big">+152 %</div>
+      <div class="det">
+        <strong>Upside médian des 3 analystes documentés récemment (vs 6,76 €)</strong>
+        Les 3 analystes documentés avec des objectifs récents et vérifiables sont unanimement à l'Achat. Objectif moyen simple : ~17 € (+152 %). La couverture inclut également Gilbert Dupont/SG, Kempen et Portzamparc (positionss non mises à jour récemment dans les sources disponibles). D'après Investing.com (mars 2026) : 5 analystes, objectif moyen 16,54 €, max 19 €, min 14,7 €.
+      </div>
+    </div>
+
+    <div class="cons-disclaimer">
+      ⚠️ <strong style="color:var(--yellow)">Note sur les sources :</strong> L'objectif affiché sur Boursorama au 17/03/2026 est de <strong>9,98 €</strong> (source FactSet). Cet écart avec les objectifs individuels documentés (15-19 €) peut s'expliquer par l'inclusion d'analystes avec des objectifs plus anciens non mis à jour, ou une pondération différente. Les 3 objectifs ci-dessus sont ceux les plus récemment confirmés dans les sources disponibles (Zonebourse, AOF, Boursorama, déc. 2025 — janv. 2026). <strong>Les objectifs pré-AK de novembre 2025 (émission à 3,48 €) peuvent avoir dilué la valorisation par action.</strong> La mise à jour post-résultats ARES EBMT du 23/03/2026 n'est pas encore publiée à ce jour.
+    </div>
+  </section>
+
+  <!-- PERSPECTIVES -->
+  <section>
+    <div class="section-title">Perspectives Court / Moyen / Long Terme</div>
+    <div class="pg">
+      <div class="pc">
+        <h4 class="ct">Court Terme</h4>
+        <div class="horizon">Horizon 1–4 semaines</div>
+        <ul>
+          <li>🚨 Résultats annuels 2025 le 30 mars (5 jours)</li>
+          <li>Congrès SFH Paris 27 mars — présentation ARES</li>
+          <li>Golden Ratio 6,76 € : support critique à tenir</li>
+          <li>MACD négatif : momentum CT dégradé</li>
+          <li>RSI 58 : pas de surachat, neutre</li>
+          <li>Si 6,76 € cède → 5,97 € (50% Fib)</li>
+        </ul>
+      </div>
+      <div class="pc">
+        <h4 class="mt">Moyen Terme</h4>
+        <div class="horizon">Horizon 2–6 mois</div>
+        <ul>
+          <li>Décision EMA mi-2026 : pivot de tout le dossier</li>
+          <li>Si AMM accordée : 12 M€ Clinigen + lancement EU</li>
+          <li>Tranche B BEI (6 M€) débloquée si AMM</li>
+          <li>Résistance 8,46 € à franchir si EMA positive</li>
+          <li>ATH 10,1 € en ligne de mire si approbation</li>
+          <li>⚠️ Tréso horizon août 2026 — risque si délai EMA</li>
+        </ul>
+      </div>
+      <div class="pc">
+        <h4 class="lt">Long Terme</h4>
+        <div class="horizon">Horizon 6 mois – 2 ans</div>
+        <ul>
+          <li>Xervyteg® : 1er immunomod. microbiote en EU (si AMM)</li>
+          <li>MaaT033 PHOEBUS Phase 2b : data à venir</li>
+          <li>IMMUNOLIFE : résultats fin 2030</li>
+          <li>Marché aGvH : besoin médical non couvert énorme</li>
+          <li>Analystes : objectifs 15-19 € (+122% à +181%)</li>
+          <li>⚠️ Dilutions futures si EMA différée</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section>
+    <div class="section-title">Mon Avis Personnel</div>
+    <div class="verdict">
+
+      <div class="score-wrap">
+        <div class="score-badge">
+          <div class="sn">6,5</div>
+          <div class="sl">/10</div>
+        </div>
+        <div class="score-desc">
+          <strong>Thèse solide sur le fond, mais situation technique et financière sous haute tension</strong>
+          Le dossier clinique est impressionnant et les analystes sont unanimes. Mais la trésorerie dépend entièrement de la décision EMA, et le MACD négatif sur le Golden Ratio impose la prudence CT.
+        </div>
+      </div>
+
+      <h3>Arguments pour :</h3>
+      <p>Les résultats ARES sont objectivement impressionnants : 62 % de réponse globale GI au J28 et 54 % de survie à 12 mois dans une indication sans aucune option thérapeutique validée (survie historique ~15 %). La présentation en session plénière présidentielle de l'EBMT — le moment le plus visible du congrès européen de greffe — est une validation scientifique de premier plan. L'AMM EMA est déposée et une décision est attendue à mi-2026. La couverture analyste est large (5+ analystes) et unanimement à l'Achat avec des objectifs de 15 à 19 €, soit +122 % à +181 % d'upside. Le financement est structuré de manière intelligente (BEI non dilutif, Clinigen, placements). Le catalyseur des résultats annuels 2025 dans 5 jours peut clarifier positivement le dossier financier.</p>
+
+      <h3 style="margin-top:14px">Arguments contre :</h3>
+      <p>La dépendance de la survie financière à la décision EMA est le risque principal : si la décision est négative ou différée au-delà de l'été 2026, MaaT Pharma devra lever des fonds dans l'urgence, avec un effet dilutif potentiellement sévère. Le burn rate opérationnel est élevé (~14-15 M€/semestre), ce qui en fait une société qui consomme beaucoup sans revenus commerciaux encore significatifs. L'AMM n'est pas garantie : c'est un essai à bras unique sans randomisation, et l'EMA peut toujours demander des données complémentaires. Sur le plan technique, le MACD négatif sur un support aussi critique que le Golden Ratio est un signal de vigilance réel. Les AK successives (mars et nov. 2025) ont dilué les actionnaires de manière significative. Enfin, le cours actuel à 6,76 € représente déjà une revalorisation importante depuis le plancher ARES de 3,53 €.</p>
+
+      <div class="conclu">
+        <span class="clabel">⚡ Niveaux Techniques & Catalyseurs à Surveiller</span>
+        <span class="cline">SUPPORTS : 6,76 € (Golden Ratio 61,8% Fib — test en cours) · 5,97 € (50% Fib) · 5,27 € (38,2% Fib)</span>
+        <span class="cline">RÉSISTANCES : 8,46 € (visible sur PRT) · 10,1 € (ATH — 100% Fib)</span>
+        <span style="color:#fde68a">
+          📅 <strong style="color:var(--red)">RDV URGENT 27 mars : Congrès SFH Paris</strong> — Présentation orale ARES (dans 2 jours)<br>
+          📅 <strong style="color:var(--red)">RDV CRITIQUE 30 mars : Résultats annuels 2025</strong> — Trésorerie Q4, CA 2025, horizon financier (dans 5 jours)<br>
+          📅 <strong style="color:var(--yellow)">RDV PIVOT mi-2026 : Décision EMA Xervyteg®</strong> — Si OUI → 12 M€ Clinigen + lancement EU. Si NON/différé → risque de financement.<br>
+          🔴 Stop de vigilance : clôture sous 5,97 € (50% Fib) = remise en cause CT significative.
+        </span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:980px;margin:0 auto;padding:0 20px">
+    <strong style="color:#6872a8;font-size:12px">Sources documentées et vérifiées :</strong><br>
+    Graphique ProRealTime 1S hebdomadaire MAAT (25/03/2026 16:01, différé 15min) · Page Boursorama MAAT (25/03/2026) · Résultats finaux Phase 3 ARES — communiqué officiel MaaT Pharma (maatpharma.com, 23/03/2026) · Résultats T3 2025 + trésorerie 22,4 M€ (maatpharma.com, 04/11/2025) · AK novembre 2025 ~9,1 M€ à 3,48 € (maatpharma.com, 13-17/11/2025) · AK mars 2025 13 M€ à 6,10 € (maatpharma.com, 27/03/2025) · Accord Clinigen 10,5 M€ + milestone 12 M€ (maatpharma.com, juillet 2025) · Financement BEI 37,5 M€ en 4 tranches (maatpharma.com, juillet 2025) · Nombre d'actions 18 847 475 au 31/01/2026 (maatpharma.com, 03/02/2026) · Agenda financier — résultats 30/03/2026 (maatpharma.com, 04/11/2025) · Stifel Achat 19 € (Zonebourse, 21/01/2026) · Kepler Cheuvreux Achat 17 € (Zonebourse, 21/01/2026) · KBC Securities Achat 15 € (AOF/Boursorama, 09/12/2025) · Investing.com consensus 5 analystes, moy. 16,54 €
+    <br><br>
+    <span style="color:#3a4060">Analyse réalisée le <strong style="color:#4a5080">25 mars 2026 à 16h30</strong> · NPC — Pas un conseil en investissement · DYOR · Performances passées ne préjugent pas des performances futures.</span>
+  </div>
+</footer>
+
+</body>
+</html>
