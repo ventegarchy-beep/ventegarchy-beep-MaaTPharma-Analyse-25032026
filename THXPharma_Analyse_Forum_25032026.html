@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THX Pharma (ALTHX) — Analyse Boursière 25/03/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04060f;
+    --surface: #080c18;
+    --surface2: #0d1226;
+    --border: #131a30;
+    --heading: #eef0ff;
+    --text: #b8bde0;
+    --sub: #6872a8;
+    --accent: #818cf8;
+    --accent-dim: rgba(129,140,248,0.12);
+    --green: #34d399;
+    --red: #f87171;
+    --yellow: #fbbf24;
+    --orange: #fb923c;
+    --blue: #38bdf8;
+    --purple: #c084fc;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 15px; line-height: 1.65; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* HERO */
+  .hero { position: relative; padding: 52px 36px 40px; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 40%, rgba(129,140,248,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-dim); border: 1px solid rgba(129,140,248,0.3); border-radius: 20px; padding: 4px 14px; font-size: 11.5px; font-weight: 600; letter-spacing: .06em; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; }
+  .hero-badge::before { content: '◆'; font-size: 9px; }
+  .hero h1 { font-size: 2.8rem; font-weight: 700; color: var(--heading); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
+  .hero h1 span { color: var(--accent); }
+  .hero-tagline { font-size: 1.05rem; color: var(--sub); font-style: italic; margin-bottom: 26px; max-width: 600px; }
+  .course-line { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--heading); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .course-line .delta { font-size: 1rem; padding: 3px 10px; border-radius: 8px; background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12.5px; color: var(--sub); }
+  .hero-meta strong { color: var(--text); font-weight: 600; }
+  .npc { font-size: 11px; color: #4a5080; font-style: italic; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+  /* SECTIONS */
+  section { margin-top: 40px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ALERTS */
+  .alert { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid; font-size: 14px; }
+  .alert .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .alert strong { display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 3px; }
+  .ag { background: rgba(52,211,153,0.07); border-color: var(--green); color: #a7f3d0; }
+  .ag strong { color: var(--green); }
+  .aw { background: rgba(251,191,36,0.07); border-color: var(--yellow); color: #fde68a; }
+  .aw strong { color: var(--yellow); }
+  .ab { background: rgba(56,189,248,0.07); border-color: var(--blue); color: #bae6fd; }
+  .ab strong { color: var(--blue); }
+  .ar { background: rgba(248,113,113,0.07); border-color: var(--red); color: #fecaca; }
+  .ar strong { color: var(--red); }
+
+  /* KPI GRID */
+  .kg { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 14px 14px; }
+  .kl { font-size: 10.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--sub); margin-bottom: 6px; }
+  .kv { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 700; color: var(--heading); line-height: 1; }
+  .kd { font-size: 11px; margin-top: 5px; }
+  .kd.up { color: var(--green); }
+  .kd.down { color: var(--red); }
+  .kd.neu { color: var(--sub); }
+  .ks { font-size: 11px; color: var(--sub); margin-top: 3px; }
+
+  /* CARD */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 12px; }
+  .card h3 { font-size: 1rem; font-weight: 700; color: var(--heading); margin-bottom: 14px; }
+  .card p { color: #6872a8; line-height: 1.7; font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { background: var(--surface2); color: var(--sub); font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid rgba(19,26,48,0.6); color: var(--text); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .dt { margin-top: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .dt td { color: #6872a8; font-size: 13.5px; }
+
+  /* TIMELINE */
+  .tl { position: relative; padding-left: 28px; margin-top: 12px; }
+  .tl::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tli { position: relative; margin-bottom: 18px; }
+  .tli::before { content: ''; position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
+  .tli.done::before { background: var(--green); }
+  .tli.key::before { background: var(--accent); }
+  .tli.now::before { background: var(--red); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+  .tli.next::before { background: var(--orange); }
+  .tld { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 3px; }
+  .tld.done { color: var(--green); }
+  .tld.key { color: var(--accent); }
+  .tld.now { color: var(--red); }
+  .tld.next { color: var(--orange); }
+  .tldesc { font-size: 13.5px; color: #6872a8; line-height: 1.55; }
+  .tldesc strong { color: var(--text); }
+
+  /* FIBONACCI */
+  .frow { display: grid; grid-template-columns: 100px 1fr 110px; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(19,26,48,0.5); }
+  .frow:last-child { border-bottom: none; }
+  .frow.golden { background: rgba(129,140,248,0.06); border-radius: 8px; padding: 10px 12px; margin: 2px -12px; border: 1px solid rgba(129,140,248,0.25); }
+  .frow.coursactuel { background: rgba(192,132,252,0.06); border-radius: 8px; padding: 10px 12px; margin: 2px -12px; border: 1px solid rgba(192,132,252,0.2); }
+  .flvl { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #6872a8; font-weight: 600; }
+  .frow.golden .flvl { color: var(--accent); }
+  .frow.coursactuel .flvl { color: var(--purple); }
+  .fbar-wrap { background: rgba(255,255,255,0.04); border-radius: 4px; height: 8px; }
+  .fbar { height: 8px; border-radius: 4px; background: rgba(129,140,248,0.25); }
+  .frow.golden .fbar { background: var(--accent); }
+  .frow.coursactuel .fbar { background: var(--purple); }
+  .fprice { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 700; color: var(--text); text-align: right; }
+  .frow.golden .fprice { color: var(--accent); }
+  .frow.coursactuel .fprice { color: var(--purple); }
+  .fib-header { display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--sub); padding: 0 0 10px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+  .fib-note { margin-top: 14px; font-size: 12.5px; color: var(--sub); padding: 12px 16px; background: rgba(129,140,248,0.05); border-radius: 8px; border-left: 3px solid rgba(129,140,248,0.3); }
+
+  /* CONSENSUS */
+  .analyst-row { display: flex; align-items: center; gap: 16px; padding: 16px 18px; background: rgba(129,140,248,0.06); border: 1px solid rgba(129,140,248,0.2); border-radius: 10px; margin-bottom: 14px; }
+  .analyst-name { font-weight: 700; color: var(--heading); font-size: 15px; }
+  .analyst-date { font-size: 11px; color: var(--sub); margin-top: 2px; }
+  .analyst-rec { display: inline-flex; padding: 4px 12px; border-radius: 20px; background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.25); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-left: auto; flex-shrink: 0; }
+  .analyst-obj { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--green); flex-shrink: 0; }
+  .upside-box { display: flex; align-items: center; gap: 18px; background: rgba(52,211,153,0.05); border: 1px solid rgba(52,211,153,0.18); border-radius: 10px; padding: 16px 20px; margin-top: 12px; }
+  .upside-box .big { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--green); flex-shrink: 0; }
+  .upside-box .detail { font-size: 13.5px; color: #6872a8; }
+  .upside-box .detail strong { color: var(--heading); display: block; margin-bottom: 3px; }
+  .cons-disclaimer { font-size: 12.5px; color: var(--sub); padding: 12px 16px; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: 8px; margin-top: 14px; line-height: 1.65; }
+
+  /* PERSPECTIVES */
+  .pg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+  .pc { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .pc h4 { font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+  .pc h4.ct { color: var(--orange); }
+  .pc h4.mt { color: var(--accent); }
+  .pc h4.lt { color: var(--green); }
+  .pc .horizon { font-size: 10.5px; color: var(--sub); margin-bottom: 12px; }
+  .pc ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .pc ul li { font-size: 13px; color: #6872a8; padding-left: 14px; position: relative; }
+  .pc ul li::before { content: '›'; position: absolute; left: 0; font-weight: 700; color: var(--accent); }
+
+  /* VERDICT */
+  .verdict { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-top: 12px; position: relative; overflow: hidden; }
+  .verdict::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--purple)); }
+  .verdict h3 { font-size: 1rem; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
+  .verdict p { font-size: 14px; color: #6872a8; line-height: 1.75; margin-bottom: 12px; }
+  .conclu { background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.2); border-radius: 10px; padding: 16px 20px; margin-top: 18px; font-size: 13.5px; color: #fde68a; line-height: 1.7; }
+  .conclu .clabel { color: var(--yellow); display: block; margin-bottom: 8px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+  .conclu .cline { display: block; color: var(--heading); margin-bottom: 6px; font-size: 14px; }
+
+  /* SCORE */
+  .score-wrap { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+  .score-badge { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(129,140,248,0.08); flex-shrink: 0; }
+  .score-badge .sn { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .score-badge .sl { font-size: 9px; color: var(--sub); text-transform: uppercase; letter-spacing: .06em; }
+  .score-desc { font-size: 13.5px; color: var(--sub); }
+  .score-desc strong { color: var(--heading); display: block; font-size: 1rem; margin-bottom: 3px; }
+
+  /* MISC */
+  .prog-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 6px; width: 120px; display: inline-block; vertical-align: middle; }
+  .prog-bar { height: 6px; border-radius: 4px; }
+  .pb-green { background: var(--green); }
+  .pb-yellow { background: var(--yellow); }
+  .pb-accent { background: var(--accent); }
+  .pb-blue { background: var(--blue); }
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .tag-green { background: rgba(52,211,153,0.12); color: var(--green); }
+  .tag-yellow { background: rgba(251,191,36,0.12); color: var(--yellow); }
+  .tag-accent { background: rgba(129,140,248,0.12); color: var(--accent); }
+  .tag-blue { background: rgba(56,189,248,0.12); color: var(--blue); }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); margin-top: 50px; padding: 20px; font-size: 11.5px; color: #4a5080; line-height: 1.6; }
+
+  @media (max-width: 680px) {
+    .hero h1 { font-size: 2rem; }
+    .kg { grid-template-columns: repeat(2, 1fr); }
+    .pg { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">Biotech · Maladies Neurologiques Rares</div>
+    <h1>THX <span>Pharma</span></h1>
+    <p class="hero-tagline">Ex-Theranexus — Biotech lyonnaise issue du CEA, pionnière du ciblage simultané neurones + cellules gliales, transformée par l'accord Biocodex de février 2026</p>
+    <div class="course-line">
+      <span>3,05 €</span>
+      <span class="delta">▲ +7,02 %</span>
+      <span style="font-size:.9rem;color:var(--sub);font-family:'Exo 2',sans-serif;font-weight:400">ALTHX · Euronext Growth Paris</span>
+    </div>
+    <div class="hero-meta">
+      <span>📅 <strong>25 mars 2026 — 11h18 CET</strong></span>
+      <span>🏙️ <strong>Lyon, France</strong> — fondée 2013, issue du CEA</span>
+      <span>🔬 <strong>ISIN</strong> FR0013286259</span>
+      <span>📊 <strong>RSI(14)</strong> 57,03 · <strong>MACD ZéroLag</strong> +0,224</span>
+      <span>💹 <strong>Actions</strong> 13 796 556 · <strong>Cap.</strong> ~42 M€</span>
+    </div>
+    <p class="npc">⚠️ NPC — Analyse personnelle réalisée à titre informatif uniquement. Pas un conseil en investissement. Toujours effectuer vos propres recherches (DYOR) avant toute décision. Cours différés de 15 min (ProRealTime). Les performances passées ne préjugent pas des performances futures.</p>
+  </header>
+
+  <!-- ALERTES -->
+  <section>
+    <div class="section-title">Alertes</div>
+
+    <div class="alert ag">
+      <span class="icon">🚀</span>
+      <div>
+        <strong>Deal Biocodex — accord de licences structurant jusqu'à 173 M€ (10 fév. 2026)</strong>
+        Biocodex acquiert des licences sur Batten-1 (mondial exclusif) et TX01 (US/Canada) pour un montant global pouvant atteindre 173 M€ : <strong>12 M€ d'upfront reçus en mars 2026</strong> + jusqu'à 161 M€ de milestones de développement et de commercialisation + royalties à deux chiffres sur les ventes nettes. Biocodex prend en charge l'intégralité des coûts de développement de Batten-1. La cap. actuelle (~42 M€) valorise la société à moins du quart de la seule valeur potentielle de cet accord.
+      </div>
+    </div>
+
+    <div class="alert ag">
+      <span class="icon">💰</span>
+      <div>
+        <strong>Trésorerie pro forma 21,7 M€ — chiffre communiqué officiellement par THX Pharma (19/02/2026)</strong>
+        Trésorerie au 31/12/2025 : 7 764 k€. Auxquels s'ajoutent les 12 M€ Biocodex reçus en mars 2026 et une avance sur le financement du programme Batten-1, portant la <strong>trésorerie pro forma à 21,7 M€</strong> selon le communiqué officiel de la société. Runway sécurisé. Pas de levée de fonds dilutive nécessaire à court terme selon la direction.
+      </div>
+    </div>
+
+    <div class="alert ab">
+      <span class="icon">📅</span>
+      <div>
+        <strong>Catalyseur fondamental dans 34 jours — 28 avril 2026</strong>
+        Publication des résultats financiers annuels 2025 et de la trésorerie au 31/03/2026. Première publication post-Biocodex. Date annoncée officiellement dans l'agenda financier 2026. Potentiel catalyseur majeur avec mise à jour possible de la couverture analyste.
+      </div>
+    </div>
+
+    <div class="alert aw">
+      <span class="icon">⚠️</span>
+      <div>
+        <strong>Volatilité extrême + résistance proche + couverture analyste quasi inexistante</strong>
+        Le titre est passé de 0,26 € à 5,13 € (ATH) avant de consolider. Il a été dilué de +46 % en nov. 2025 (+4 356 804 actions nouvelles à 1,80 €). Résistance horizontale immédiate à <strong>3,44 €</strong>. <strong>Un seul analyste documenté : Portzamparc (Achat, 5,80 €).</strong> Toute donnée de "consensus" allant au-delà n'est pas vérifiable à ce jour.
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI GRID -->
+  <section>
+    <div class="section-title">KPIs Clés — Sources Vérifiées</div>
+    <div class="kg">
+      <div class="kpi">
+        <div class="kl">Cours</div>
+        <div class="kv">3,05 €</div>
+        <div class="kd up">▲ +7,02 % séance</div>
+        <div class="ks">PRT 10:46 CET, diff. 15min</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Variation 52 semaines</div>
+        <div class="kv">+591 %</div>
+        <div class="kd up">Range 0,26 → 5,10 €</div>
+        <div class="ks">Source : Yahoo Finance</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Nombre d'actions</div>
+        <div class="kv">13 796 556</div>
+        <div class="kd neu">Post-AK nov. 2025</div>
+        <div class="ks">Communiqué 13/11/2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Cap. Boursière</div>
+        <div class="kv">~42 M€</div>
+        <div class="kd neu">13 796 556 × 3,05 €</div>
+        <div class="ks">Euronext Growth Paris</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Trésorerie pro forma</div>
+        <div class="kv">21,7 M€</div>
+        <div class="kd up">▲ Chiffre officiel THX</div>
+        <div class="ks">Communiqué 19/02/2026</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Deal Biocodex total</div>
+        <div class="kv">173 M€</div>
+        <div class="kd up">12 M€ upfront reçu ✓</div>
+        <div class="ks">Communiqué 10/02/2026</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">RSI (14)</div>
+        <div class="kv">57,03</div>
+        <div class="kd neu">Zone neutre</div>
+        <div class="ks">Lu sur graphique PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">MACD ZéroLag</div>
+        <div class="kv">+0,224</div>
+        <div class="kd up">▲ Positif</div>
+        <div class="ks">Lu sur graphique PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Perte nette H1 2025</div>
+        <div class="kv">−1,07 M€</div>
+        <div class="kd down">Burn ~2 M€/an</div>
+        <div class="ks">Résultats S1, 25/09/2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Golden Ratio Fib.</div>
+        <div class="kv">1,64 €</div>
+        <div class="kd up">▲ Cours bien au-dessus</div>
+        <div class="ks">61,8% log, lu sur PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Résistance #1</div>
+        <div class="kv">3,44 €</div>
+        <div class="kd neu">+13 % à franchir</div>
+        <div class="ks">Horizontal lu sur PRT</div>
+      </div>
+      <div class="kpi">
+        <div class="kl">Analyste(s)</div>
+        <div class="kv">1 seul</div>
+        <div class="kd up">Portzamparc 5,80 €</div>
+        <div class="ks">Initiation 11/02/2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÉSENTATION -->
+  <section>
+    <div class="section-title">Présentation Société & Pipeline</div>
+    <div class="card">
+      <p>THX Pharma (ex-Theranexus, rebaptisée le 29 septembre 2025) est une biotech lyonnaise fondée en 2013, issue du CEA. Sa plateforme propriétaire cible simultanément les <strong style="color:var(--text)">neurones et les cellules gliales</strong>, une approche différenciante. Depuis l'accord Biocodex de février 2026, la société est entrée dans une phase tournée vers la commercialisation, avec Biocodex finançant intégralement Batten-1 et visant une commercialisation fin 2029, et TX01 en cours de dépôt réglementaire pour une mise sur le marché visée en 2027.</p>
+    </div>
+
+    <div class="dt" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>Candidat</th>
+            <th>Indication(s)</th>
+            <th>Stade</th>
+            <th>Partenaire(s)</th>
+            <th>Comm. visée</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--heading)">TX01</strong></td>
+            <td>Gaucher + Niemann-Pick type C</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-yellow" style="width:80%"></div></div>
+                <span style="font-size:11.5px;color:var(--yellow)">Dépôts AMM 2026</span>
+              </div>
+            </td>
+            <td>Exeltis (EU + AUS), Biocodex (US/CA)</td>
+            <td style="font-family:'JetBrains Mono',mono;color:var(--green)">2027</td>
+            <td><span class="tag tag-yellow">Réglementaire</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--heading)">Batten-1</strong></td>
+            <td>Maladie de Batten juvénile (CLN3)</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-accent" style="width:55%"></div></div>
+                <span style="font-size:11.5px;color:var(--accent)">Ph. I/II — Ph. III 2026</span>
+              </div>
+            </td>
+            <td>Biocodex (licence mondiale exclusive)</td>
+            <td style="font-family:'JetBrains Mono',mono;color:var(--sub)">Fin 2029</td>
+            <td><span class="tag tag-accent">Clinique</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--heading)">Plateforme ASO</strong></td>
+            <td>Maladies neuro. rares (non divulguées)</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="prog-bar-wrap"><div class="prog-bar pb-blue" style="width:15%"></div></div>
+                <span style="font-size:11.5px;color:var(--blue)">Préclinique</span>
+              </div>
+            </td>
+            <td>Labos partenaires (non divulgués)</td>
+            <td style="font-family:'JetBrains Mono',mono;color:var(--sub)">TBD</td>
+            <td><span class="tag tag-blue">Pipeline</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h3>🤝 Accord Biocodex — Détails officiels vérifiés (communiqué 10/02/2026)</h3>
+      <div class="dt" style="margin-top:0;border:none">
+        <table>
+          <tbody>
+            <tr><td style="color:var(--sub);width:250px">Valeur totale potentielle</td><td style="color:var(--heading);font-weight:700;font-family:'JetBrains Mono',mono">173 M€</td></tr>
+            <tr><td style="color:var(--sub)">Paiement initial (upfront)</td><td style="color:var(--green);font-weight:700;font-family:'JetBrains Mono',mono">12 M€ — versé mars 2026 ✓</td></tr>
+            <tr><td style="color:var(--sub)">Milestones développement + commercialisation</td><td style="font-family:'JetBrains Mono',mono">Jusqu'à 161 M€</td></tr>
+            <tr><td style="color:var(--sub)">Royalties sur ventes nettes</td><td>Taux à deux chiffres (%)</td></tr>
+            <tr><td style="color:var(--sub)">Financement développement Batten-1</td><td style="color:var(--green);font-weight:700">Intégralement pris en charge par Biocodex ✓</td></tr>
+            <tr><td style="color:var(--sub)">Licence Batten-1</td><td>Mondiale exclusive</td></tr>
+            <tr><td style="color:var(--sub)">Licence TX01</td><td>États-Unis + Canada (exclusive)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHRONOLOGIE -->
+  <section>
+    <div class="section-title">Chronologie des Événements Clés</div>
+    <div class="tl">
+      <div class="tli done">
+        <div class="tld done">✓ Nov. 2024 — Child Neurology Society Annual Meeting, San Diego</div>
+        <div class="tldesc">Présentation des résultats Phase I/II de <strong>Batten-1</strong> par THX Pharma et la fondation BBDF. Signaux positifs sur l'acuité visuelle chez les patients CLN3 les plus jeunes. Aucun traitement approuvé n'existe dans cette maladie.</div>
+      </div>
+      <div class="tli done">
+        <div class="tld done">✓ 29 Sept. 2025 — Theranexus devient THX Pharma</div>
+        <div class="tldesc">Changement de nom stratégique, signalant l'entrée dans une phase de <strong>commercialisation</strong> avec TX01 et Batten-1 comme actifs centraux.</div>
+      </div>
+      <div class="tli done">
+        <div class="tld done">✓ 14 Oct. 2025 — Étape majeure vers la commercialisation de TX01 avec Exeltis</div>
+        <div class="tldesc">Franchissement d'une étape réglementaire clé ouvrant la voie au <strong>dépôt des dossiers d'AMM de TX01</strong> (Gaucher + Niemann-Pick type C). Exeltis est partenaire pour l'Europe et l'Australie.</div>
+      </div>
+      <div class="tli done">
+        <div class="tld done">✓ 13–17 Nov. 2025 — AK de 7,8 M€ brut réussie</div>
+        <div class="tldesc">Émission de <strong>4 356 804 actions nouvelles</strong> à 1,80 €/action. Capital porté à <strong>13 796 556 actions</strong>. Souscription à 100 %. Coordinateur : Portzamparc BNP Paribas. Dilution actionnaire : +46 % en nombre de titres.</div>
+      </div>
+      <div class="tli key">
+        <div class="tld key">★ 10–11 Fév. 2026 — Accord stratégique Biocodex : +52 % à +60 % en séance</div>
+        <div class="tldesc">Licences jusqu'à <strong>173 M€</strong> sur Batten-1 (mondial) et TX01 (US/Canada). 12 M€ d'upfront. Biocodex finance intégralement la Phase III Batten-1. Point d'inflexion historique pour la société. Initiation Portzamparc à l'Achat, obj. 5,80 €.</div>
+      </div>
+      <div class="tli done">
+        <div class="tld done">✓ Mars 2026 — Réception des 12 M€ Biocodex</div>
+        <div class="tldesc">Versement initial reçu comme annoncé. Trésorerie pro forma portée à <strong>21,7 M€</strong> (chiffre officiel THX Pharma du 19/02/2026, incluant l'avance sur financement Batten-1).</div>
+      </div>
+      <div class="tli now">
+        <div class="tld now">▶ AUJOURD'HUI — 25 mars 2026, 11h18 — Cours : 3,05 € (+7,02 %)</div>
+        <div class="tldesc">Consolidation au-dessus du Golden Ratio Fibonacci (1,64 €). RSI 57,03 neutre. MACD positif (+0,224). Résistance immédiate à <strong>3,44 €</strong> (ligne rouge sur graphique PRT). Volume en hausse.</div>
+      </div>
+      <div class="tli next">
+        <div class="tld next">→ 28 Avr. 2026 — Résultats financiers annuels 2025 + trésorerie au 31/03/2026</div>
+        <div class="tldesc">Première publication financière post-Biocodex. Confirmation de la trésorerie, bilan 2025 complet, perspectives 2026 détaillées. Possible mise à jour de l'objectif Portzamparc. <strong>Catalyseur majeur potentiel.</strong></div>
+      </div>
+      <div class="tli next">
+        <div class="tld next">→ 2026 — Dépôts AMM TX01 + Démarrage Phase III Batten-1</div>
+        <div class="tldesc">Deux jalons annoncés pour 2026 par la direction : (1) dépôts des dossiers d'autorisation TX01 et (2) <strong>démarrage Phase III Batten-1</strong> intégralement financé par Biocodex. Milestones contractuels potentiellement débloqués.</div>
+      </div>
+      <div class="tli">
+        <div class="tld" style="color:var(--green)">→ 2027 — Commercialisation TX01 visée (Exeltis EU / Biocodex US-CA)</div>
+        <div class="tldesc">Si les dossiers réglementaires aboutissent dans les délais, <strong>TX01 devient le premier médicament commercialisé</strong> de THX Pharma. Premières royalties récurrentes attendues.</div>
+      </div>
+      <div class="tli">
+        <div class="tld" style="color:var(--purple)">→ Fin 2029 — Commercialisation Batten-1 visée par Biocodex</div>
+        <div class="tldesc">Horizon long terme sous réserve du succès de la Phase III. Si confirmé, Batten-1 serait potentiellement le <strong>premier traitement au monde</strong> pour la maladie de Batten juvénile CLN3 (aucune thérapie approuvée à ce jour).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIBONACCI -->
+  <section>
+    <div class="section-title">Analyse Technique — Fibonacci</div>
+    <div class="card">
+      <h3>Fibonacci tracé sur ProRealTime 1S — Mèche basse : 0,26 € (oct. 2024) → Mèche haute : 5,13 €</h3>
+      <p style="margin-bottom:16px">Amplitude de <strong style="color:var(--yellow)">+1 873 %</strong>. Sur des amplitudes de cet ordre, les ratios Fibonacci sont appliqués sur une échelle logarithmique dans ProRealTime. Les niveaux 0%, 23,6%, 38,2%, 50%, 61,8% et 100% sont lus directement sur le graphique PRT et repris sans recalcul. La position du cours actuel (~82% du range log) est estimée par interpolation.</p>
+
+      <div>
+        <div class="fib-header">
+          <span>Niveau Fibonacci</span>
+          <span>Barre proportionnelle</span>
+          <span>Prix (PRT)</span>
+        </div>
+
+        <div class="frow">
+          <div class="flvl" style="color:var(--red)">100% — ATH</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:100%;background:rgba(248,113,113,0.5)"></div></div>
+          <div class="fprice" style="color:var(--red)">5,13 €</div>
+        </div>
+
+        <div class="frow coursactuel">
+          <div class="flvl">↑ Cours actuel (est.)</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:82%"></div></div>
+          <div class="fprice">3,05 € ←</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">76,4% (interp.)</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:76.4%"></div></div>
+          <div class="fprice" style="color:var(--sub)">~2,54 €*</div>
+        </div>
+
+        <div class="frow golden">
+          <div class="flvl">61,8% — Golden ★</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:61.8%"></div></div>
+          <div class="fprice">1,64 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">50%</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:50%"></div></div>
+          <div class="fprice">1,15 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">38,2%</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:38.2%"></div></div>
+          <div class="fprice">0,81 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">23,6%</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:23.6%"></div></div>
+          <div class="fprice">0,53 €</div>
+        </div>
+
+        <div class="frow">
+          <div class="flvl">0% — Base</div>
+          <div class="fbar-wrap"><div class="fbar" style="width:2%"></div></div>
+          <div class="fprice">0,26 €</div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;color:#4a5080;margin-top:10px">* Le niveau 76,4% (~2,54 €) est un niveau intermédiaire interpolé. Les autres niveaux sont lus directement sur le graphique ProRealTime.</p>
+
+      <div class="fib-note">
+        <strong style="color:var(--accent)">Lecture technique :</strong> À 3,05 €, le cours est <strong>nettement au-dessus du Golden Ratio (1,64 €)</strong> — structure haussière long terme validée. Résistances identifiées sur le graphique PRT : <strong>3,44 €</strong> (ligne rouge horizontale, résistance immédiate) et <strong>3,85 €</strong> (résistance majeure supérieure). Support horizontal visible sur le graphique : <strong>1,99 €</strong>. En cas de retour sous le Golden Ratio (1,64 €), le signal haussier long terme serait remis en cause.
+      </div>
+    </div>
+  </section>
+
+  <!-- COUVERTURE ANALYSTES -->
+  <section>
+    <div class="section-title">Couverture Analystes — État au 25/03/2026</div>
+    <div class="card">
+      <h3>Analyste(s) documenté(s) avec objectif de cours publié et vérifiable</h3>
+
+      <div class="analyst-row">
+        <div style="flex:1">
+          <div class="analyst-name">Portzamparc (BNP Paribas)</div>
+          <div class="analyst-date">Initiation à l'achat publiée le <strong style="color:var(--text)">11 février 2026</strong> — au lendemain de l'annonce Biocodex (cours ~2,40 € ce jour-là)</div>
+        </div>
+        <div class="analyst-obj">5,80 €</div>
+        <div class="analyst-rec">Achat</div>
+      </div>
+
+      <div class="upside-box">
+        <div class="big">+90 %</div>
+        <div class="detail">
+          <strong>Upside potentiel selon Portzamparc vs cours actuel (3,05 €)</strong>
+          L'objectif de 5,80 € représente +90 % par rapport au cours du 25/03/2026. Au moment de l'initiation (11/02/2026, cours ~2,40 €), l'upside affiché était de +142 %. Portzamparc est par ailleurs le coordinateur de l'AK de novembre 2025, ce dont il faut tenir compte dans la lecture de cette recommandation.
+        </div>
+      </div>
+
+      <div class="cons-disclaimer">
+        ⚠️ <strong style="color:var(--yellow)">Couverture très limitée :</strong> Portzamparc est le seul analyste ayant publié un objectif de cours documenté et vérifiable sur ALTHX (confirmé par TradingView : 1 analyste, prix min = max = 5,80 €). Allinvest Securities a commenté positivement l'accord Biocodex dans la presse sans publier d'objectif chiffré accessible. Les chiffres de "consensus à 8,00 € / 5 analystes" qui circulent sur certains forums et agrégateurs ne sont <strong style="color:var(--yellow)">pas vérifiables</strong> sur les sources officielles consultées (Boursorama, Zonebourse, TradingView, Fortuneo, Yahoo Finance) et ne sont donc pas repris ici. À surveiller : une mise à jour de couverture post-résultats du 28 avril est possible.
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSPECTIVES -->
+  <section>
+    <div class="section-title">Perspectives Court / Moyen / Long Terme</div>
+    <div class="pg">
+      <div class="pc">
+        <h4 class="ct">Court Terme</h4>
+        <div class="horizon">Horizon 1–4 semaines</div>
+        <ul>
+          <li>RSI 57 — marge haussière sans surachat</li>
+          <li>MACD positif (+0,224)</li>
+          <li>Résistance à franchir : 3,44 €</li>
+          <li>Résultats 28 avril dans 34j = catalyseur</li>
+          <li>Support intermédiaire : 1,99 €</li>
+          <li>⚠️ Volatilité élevée, liquidité limitée</li>
+        </ul>
+      </div>
+      <div class="pc">
+        <h4 class="mt">Moyen Terme</h4>
+        <div class="horizon">Horizon 3–9 mois</div>
+        <ul>
+          <li>Dépôts AMM TX01 attendus en 2026</li>
+          <li>Démarrage Phase III Batten-1 (Biocodex)</li>
+          <li>Milestones contractuels à déclencher</li>
+          <li>Tréso. pro forma 21,7 M€ : pas de dilution CT prévue</li>
+          <li>Obj. Portzamparc : 5,80 € (+90 %)</li>
+          <li>Possible élargissement de la couverture</li>
+        </ul>
+      </div>
+      <div class="pc">
+        <h4 class="lt">Long Terme</h4>
+        <div class="horizon">Horizon 18 mois – 4 ans</div>
+        <ul>
+          <li>TX01 commercialisé 2027 → royalties récurrents</li>
+          <li>Batten-1 Ph. III : potentiellement 1er traitement CLN3 au monde</li>
+          <li>Jusqu'à 161 M€ de milestones à débloquer</li>
+          <li>Plateforme ASO : pipeline préclinique à valoriser</li>
+          <li>Cap. ~42 M€ vs potentiel deal seul = 173 M€</li>
+          <li>⚠️ Phase III clinique reste incertaine</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section>
+    <div class="section-title">Mon Avis Personnel</div>
+    <div class="verdict">
+
+      <div class="score-wrap">
+        <div class="score-badge">
+          <div class="sn">7</div>
+          <div class="sl">/10</div>
+        </div>
+        <div class="score-desc">
+          <strong>Constructif sur le fond, vigilance sur l'entrée et le sizing</strong>
+          Thèse solide, trésorerie sécurisée, validation industrielle réelle. Mais couverture analyste quasi inexistante, dilution récente importante et résistance technique immédiate à 3,44 €.
+        </div>
+      </div>
+
+      <h3>Arguments pour :</h3>
+      <p>L'accord Biocodex est une validation industrielle majeure de la part d'un acteur expérimenté dans les maladies rares (Diacomit® dans le syndrome de Dravet). Le fait que Biocodex finance intégralement la Phase III Batten-1 est un dérisquage financier sans précédent pour cette micro-cap. La trésorerie pro forma de 21,7 M€ (chiffre officiel) offre un runway confortable. TX01 est en dépôt réglementaire avec une commercialisation visée dès 2027 — premiers revenus de royalties en vue. Si Batten-1 confirme ses données de Phase I/II, on parle du premier traitement jamais approuvé pour la CLN3, une maladie pédiatrique fatale sans aucune option thérapeutique. Techniquement, le cours au-dessus du Golden Ratio et un MACD positif sont des signaux constructifs.</p>
+
+      <h3 style="margin-top:14px">Arguments contre :</h3>
+      <p>La performance de +591 % en 12 mois intègre déjà une grande partie des bonnes nouvelles. La résistance à 3,44 € a refusé le titre à deux reprises récemment. L'AK de novembre 2025 a dilué les actionnaires de +46 % en nombre de titres. La perte nette H1 2025 s'est creusée à -1,07 M€ (versus bénéfice l'an passé), illustrant un burn opérationnel réel d'environ 2 M€/an hors actions non-cash. La couverture analyste est quasi inexistante : un seul avis documenté (Portzamparc, 5,80 €), émis par le coordinateur de la propre AK de la société — biais à prendre en compte. La liquidité quotidienne d'ALTHX reste modeste, ce qui amplifie mécaniquement les variations. Enfin, la Phase III Batten-1 reste un pari clinique : aucune certitude de succès.</p>
+
+      <div class="conclu">
+        <span class="clabel">⚡ Niveaux Techniques & Catalyseurs à Surveiller</span>
+        <span class="cline">SUPPORTS : 1,99 € (horizontal PRT) · 1,64 € (Golden Ratio 61,8% Fib. — seuil psychologique LT)</span>
+        <span class="cline">RÉSISTANCES : 3,44 € (immédiate) · 3,85 € (majeure) · 5,13 € (ATH — 100% Fib.)</span>
+        <span style="color:#fde68a">
+          📌 Scénario haussier CT : franchissement de 3,44 € → ouverture vers 3,85 €. Obj. Portzamparc : 5,80 €.<br>
+          🔴 Signal d'alerte : retour sous 1,99 € = remise en cause de la dynamique haussière CT.<br>
+          📅 <strong style="color:var(--yellow)">RDV clé : 28 avril 2026</strong> — Résultats annuels 2025 + trésorerie au 31/03/2026. Potentiel catalyseur majeur +/−.
+        </span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:980px;margin:0 auto;padding:0 20px">
+    <strong style="color:#6872a8;font-size:12px">Sources documentées et vérifiées :</strong><br>
+    Graphique ProRealTime 1S ALTHX (25/03/2026 10:46, différé 15min) · Accord Biocodex — communiqué officiel THX Pharma (actusnews.com, 10/02/2026) · Position trésorerie 31/12/2025 + pro forma 21,7 M€ (actusnews.com, 19/02/2026) · Résultats semestriels H1 2025 (actusnews.com, 25/09/2025) · AK 7,8 M€ — 13 796 556 actions post-opération (actusnews.com, 13/11/2025) · Agenda financier 2026 (actusnews.com, 20/01/2026) · Initiation Portzamparc Achat obj. 5,80 € (ideal-investisseur.fr, 11/02/2026) · TradingView ALTHX (1 analyste confirmé, 5,80 €) · Yahoo Finance (performance 52S) · Zonebourse · Fortuneo · Boursorama
+    <br><br>
+    <span style="color:#3a4060">Analyse réalisée le <strong style="color:#4a5080">25 mars 2026 à 11h18</strong> · NPC — Pas un conseil en investissement · DYOR · Performances passées ne préjugent pas des performances futures.</span>
+  </div>
+</footer>
+
+</body>
+</html>
